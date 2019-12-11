@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ "x$1" = "x-usage" ]; then
+    echo "edit til note."
+    exit 0
+fi
+
+MEMO_DIR=`cat ~/.config/memo/config.toml | grep memodir | awk -F\" '{print $2}'`
+DATE=`date +%Y-%m-%d`
+FILENAME=${DATE}-til.md
+FILEPATH=`memo list --fullpath | grep ${FILENAME}`
+
+if [ "${FILEPATH}" = "" ]; then
+  FILEPATH=${MEMO_DIR}/${FILENAME}
+  echo "# til" > ${FILEPATH}
+  echo "DATE: ${DATE}" >> ${FILEPATH}
+  echo "" >> ${FILEPATH}
+fi
+
+vi + ${FILEPATH}
