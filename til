@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "x$1" = "x-usage" ]; then
-    echo "edit til note."
+    echo "Edit til note."
     exit 0
 fi
 
