@@ -5,5 +5,5 @@ Today I learned
 
 ## Install
 ```
-$ cp til ~/.config/memo/plugins/
+$ cp til $(memo config --cat | grep pluginsdir | awk -F\" '{print $2}')
 ```
