@@ -6,6 +6,7 @@ if [ "x$1" = "x-usage" ]; then
 fi
 
 MEMO_DIR=`cat ~/.config/memo/config.toml | grep memodir | awk -F\" '{print $2}'`
+EDITOR=`cat ~/.config/memo/config.toml | grep editor | awk -F\" '{print $2}'`
 DATE=`date +%Y-%m-%d`
 FILENAME=${DATE}-til.md
 FILEPATH=`memo list --fullpath | grep ${FILENAME}`
@@ -17,4 +18,4 @@ if [ "${FILEPATH}" = "" ]; then
   echo "" >> ${FILEPATH}
 fi
 
-vi + ${FILEPATH}
+${EDITOR} + ${FILEPATH}
